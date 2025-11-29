@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FundFlow - Stock Trading</title>
+  <link rel="stylesheet" href="stock.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header class="topbar">
+    <a href="home.html" class="logo-link">
+      <div class="logo">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>STOCKFLOW</span>
+      </div>
+    </a>
+    
+    <nav class="main-nav">
+      <a href="#" id="nav-markets" class="nav-item active"><i class="fa-solid fa-chart-area"></i> Markets</a>
+      <a href="#" id="nav-portfolio" class="nav-item"><i class="fa-solid fa-briefcase"></i> Portfolio</a>
+      <a href="#" id="nav-wallet" class="nav-item"><i class="fa-solid fa-wallet"></i> Wallet</a>
+      <a href="#" id="nav-wishlist" class="nav-item"><i class="fa-solid fa-star"></i> Wishlist</a>
+      <a href="#" id="nav-history" class="nav-item"><i class="fa-solid fa-clock-rotate-left"></i> History</a>
+    </nav>
+    
+    <div class="search-box">
+      <form id="searchForm" class="search-form">
+        <input type="text" id="searchInput" placeholder="Search stocks (AAPL, MSFT, etc)..." />
+        <button type="submit" class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+  </header>
+  
+  <main id="main-content">
+    
+    <div class="page-dashboard">
+      
+      <section id="kmi-bar" class="kmi-bar standard-card" data-aos="fade-down" data-aos-duration="600">
+        <div class="kmi-item">
+          <span class="kmi-label">NIFTY 50</span>
+          <span class="kmi-value pos">19,540.80 (+0.85%)</span>
+        </div>
+        <div class="kmi-item">
+          <span class="kmi-label">Sensex</span>
+          <span class="kmi-value neg">65,650.12 (-0.12%)</span>
+        </div>
+        <div class="kmi-item">
+          <span class="kmi-label">USD/INR</span>
+          <span class="kmi-value">83.35</span>
+        </div>
+      </section>
+
+      <section id="stock-insights-section" class="card standard-card insights-panel" data-aos="fade-right" data-aos-delay="200" data-aos-duration="800">
+        <h2 class="card-title">📈 AI Insights & Predictions</h2>
+        <div id="stock-insights-content" class="insights-grid">
+          </div>
+      </section>
+      
+      <section class="market-data-section data-focus-area standard-card" data-aos="fade-left" data-aos-delay="400" data-aos-duration="800">
+        <h2 class="card-title">📊 Live Market Watch</h2>
+        <div class="loading-overlay hidden" id="table-loading">
+          <div class="loader-ring"></div>
+          <p>Fetching Live Market Data...</p>
+        </div>
+        <div id="data-table-container">
+          </div>
+      </section>
+      
+    </div>
+  </main>
+
+  <div id="trade-modal" class="modal hidden">
+    <div class="modal-content standard-modal">
+      <span class="close" id="close-trade"><i class="fa-solid fa-xmark"></i></span>
+      <div id="trade-body"></div>
+    </div>
+  </div>
+  
+  <div id="details-modal" class="modal hidden">
+    <div class="modal-content standard-modal">
+      <span class="close" id="close-details"><i class="fa-solid fa-xmark"></i></span>
+      <div id="details-body"></div>
+    </div>
+  </div>
+  
+  <div id="toast-container"></div>
+  
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 50 });
+  </script>
+  <script src="stock.js"></script>
+</body>
+</html>

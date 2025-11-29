@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FundFlow - Finance Feed</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="feed.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header class="topbar">
+    <div class="logo-area">
+      <i class="fa-solid fa-newspaper"></i>
+      <h1>Finance Feed</h1>
+    </div>
+  </header>
+
+  <div class="search-section">
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="🔍 Search e.g. Tesla, AI, Bitcoin..." />
+    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+  </div>
+
+  <!-- 🔄 Refresh Button -->
+  <button id="refresh-btn" class="refresh-btn">
+      <i class="fa-solid fa-rotate-right"></i> Refresh Feed
+  </button>
+</div>
+
+
+  <main class="feed-main-wrapper">
+    <div id="news-list" class="news-grid-container">
+      <div class="loading-state">
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <p>Loading the latest financial news...</p>
+      </div>
+    </div>
+  </main> <div id="article-modal" class="article-modal hidden">
+    <div class="modal-content-wrapper">
+      <button class="close-modal-btn" onclick="closeArticleModal()">&times;</button>
+      <div id="article-modal-body">
+        </div>
+    </div>
+  </div>
+  
+  <script src="feed.js"></script> 
+</body>
+</html>

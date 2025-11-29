@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "mongoose": "^8.16.4",
+    "node-fetch": "^3.3.2",
+    "sentiment": "^5.0.2",
+    "socket.io": "^4.8.1",
+    "yahoo-finance2": "^2.13.3"
+  },
+  "name": "complete-demo-day-project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FundFlow - Financial Confidence</title>
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <p class="loader-text">Initializing FundFlow Matrix...</p>
+  </div>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <span class="logo-icon"><i class="fa-solid fa-puzzle-piece"></i></span>
+      <span class="logo-text">FUNDFLOW</span>
+    </div>
+    <div class="navbar-center">
+      <a href="stock.html" class="nav-link">Stocks</a>
+      <a href="ai.html" class="nav-link">TradeVision AI</a>
+      <a href="feed.html" class="nav-link">Finance Feed</a>
+      <a href="chat.html" class="nav-link">TradeConnect</a>
+      <a href="game.html" class="nav-link">Finance Game</a>
+     
+    </div>
+    <div class="navbar-user">
+      <span class="user-avatar"><i class="fa-solid fa-user"></i></span>
+      <span id="welcome-user" class="welcome-user">Welcome, <span id="usernameDisplay">loading..</span></span>
+    </div>
+  </nav>
+
+  <main class="hero-main">
+    <section class="hero-section">
+      <h1 class="hero-title" data-aos="fade-up" data-aos-duration="1000">Your Journey to Financial Confidence Starts Here</h1>
+      <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">Learn finance with AI tools, games, and real-world simulations.</p>
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+        <a href="#features" class="hero-btn primary-btn">Explore Platform</a>
+      </div>
+    </section>
+
+    <section class="features-section" id="features">
+      <div class="feature-card neumorphic-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="feature-icon"><i class="fa-solid fa-coins"></i></div>
+        <h2>Trade Real Stocks. Risk-Free</h2>
+        <p>Dive into live market action with **paper trading**—learn by doing, without losing a rupee.</p>
+      </div>
+      <div class="feature-card neumorphic-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h2>Meet Your Smartest <br>Trading Partner</h2>
+        <p>Our powerful AI predicts stock trends with real-time accuracy. See what’s rising before it happens.</p>
+      </div>
+      <div class="feature-card neumorphic-card" data-aos="zoom-in" data-aos-delay="500">
+        <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
+        <h2>Don’t Trade Alone <br> Join the Movement</h2>
+        <p>Chat, share, and grow with a community of finance learners and traders just like you.</p>
+      </div>
+      <div class="feature-card neumorphic-card" data-aos="zoom-in" data-aos-delay="700">
+        <div class="feature-icon"><i class="fa-solid fa-business-time"></i></div>
+        <h2>...Play, Decide...<br> Learn Like a Pro</h2>
+        <p>Step into a virtual economy, make bold financial choices, and master real-world money skills through play.</p>
+      </div>
+    </section>
+  </main> 
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true, offset: 50 });
+    window.addEventListener('load', function() {
+      const loadingScreen = document.getElementById('loading-screen');
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => { loadingScreen.style.display = 'none'; }, 500);
+    });
+    fetch('/session-username')
+      .then(res => res.json())
+      .then(data => {
+        const username = data.username;
+        if (!username) { window.location.href = '/'; return; }
+        document.getElementById('usernameDisplay').textContent = username;
+        const socket = io();
+        socket.emit('set username', username);
+      });
+  </script>
+</body>
+</html>
